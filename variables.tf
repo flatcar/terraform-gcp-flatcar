@@ -27,7 +27,7 @@ variable "machine_type" {
   default     = "n2-standard-2"
 }
 
-variable "network" {
+variable "network_interface" {
   type        = list(string)
   description = "List of network names (default is ['default'])."
   default     = ["default"]

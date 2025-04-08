@@ -1,0 +1,105 @@
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: flatcar-gcp-marketplace
+  annotations:
+    autogenSpecType: SINGLE_VM
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: Flatcar Container Linux on Google Cloud Platform (GCP)
+    source:
+      repo: https://github.com/flatcar/terraform-gcp-flatcar.git
+      sourceType: git
+      dir: /
+  ui:
+    input:
+      variables:
+        boot_disk_size:
+          name: disk_size
+          title: Disk Size
+          section: boot_disk
+          xGoogleProperty:
+            type: ET_GCE_DISK_SIZE
+            gceDiskSize:
+              diskTypeVariable: boot_disk_type
+        boot_disk_type:
+          name: boot_disk_type
+          title: Boot Disk Type
+          section: boot_disk
+          xGoogleProperty:
+            type: ET_GCE_DISK_TYPE
+            zoneProperty: zone
+        goog_cm_deployment_name:
+          name: goog_cm_deployment_name
+          title: Goog Cm Deployment Name
+        machine_type:
+          name: machine_type
+          title: Machine Type
+          xGoogleProperty:
+            type: ET_GCE_MACHINE_TYPE
+            zoneProperty: zone
+        name:
+          name: name
+          title: Name
+        network_interface:
+          name: network_interface
+          title: Network Interface
+          minItems: 1
+          maxItems: 8
+          section: networking
+          xGoogleProperty:
+            type: ET_GCE_NETWORK
+            gceNetwork:
+              allowSharedVpcs: true
+              machineTypeVariable: machine_type
+        sub_networks:
+          name: sub_networks
+          title: Subnetwork name
+          minItems: 1
+          maxItems: 8
+          section: networking
+          xGoogleProperty:
+            type: ET_GCE_SUBNETWORK
+            zoneProperty: zone
+            gceSubnetwork:
+              networkVariable: networks
+        external_ips:
+          name: external_ips
+          title: External IP
+          tooltip: An external IP address associated with this instance. Selecting "None" will result in the instance having no external internet access. <a href="https://cloud.google.com/compute/docs/configure-instance-ip-addresses">Learn more</a>
+          minItems: 1
+          maxItems: 8
+          section: networking
+          xGoogleProperty:
+            type: ET_GCE_EXTERNAL_IP
+            gceExternalIp:
+              networkVariable: networks
+              type: IP_EPHEMERAL
+        project_id:
+          name: project_id
+          title: Project Id
+        source_image:
+          name: source_image
+          title: Image version
+          enumValueLabels:
+            - label: stable
+              value: projects/kinvolk-public/global/images/flatcar-stable-3227-2-2
+            - label: beta
+              value: projects/kinvolk-public/global/images/flatcar-beta-3277-1-2
+            - label: alpha
+              value: projects/kinvolk-public/global/images/flatcar-alpha-3346-0-0
+          xGoogleProperty:
+            type: ET_GCE_DISK_IMAGE
+        zone:
+          name: zone
+          title: Zone
+          xGoogleProperty:
+            type: ET_GCE_ZONE
+      sections:
+        - name: networking
+          title: Networking
+          tooltip: Networking related configurations
+        - name: boot_disk
+          title: Boot Disk
+          tooltip: Configure the boot disk
