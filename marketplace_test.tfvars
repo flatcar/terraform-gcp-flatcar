@@ -1,0 +1,5 @@
+project_id                = "kinvolk-public"
+goog_cm_deployment_name   = "test-flatcar-vm"
+zone                      = "us-central1-a"
+channel                   = "alpha"
+machine_type              = "c3-standard-4"

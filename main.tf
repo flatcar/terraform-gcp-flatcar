@@ -5,9 +5,9 @@ provider "google" {
 
 locals {
   image_map = {
-    "stable" = "flatcar-stable-3227-2-2"
-    "beta"   = "flatcar-beta-3277-1-2"
-    "alpha"  = "flatcar-alpha-3346-0-0"
+    "stable" = "flatcar-stable-4152-2-2"
+    "beta"   = "flatcar-beta-4230-1-0"
+    "alpha"  = "flatcar-alpha-4284-0-0"
   }
 
   flatcar_image = "projects/kinvolk-public/global/images/${lookup(local.image_map, var.channel, "flatcar-stable-3227-2-2")}"
