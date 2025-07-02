@@ -68,3 +68,9 @@ variable "deployment_name" {
   description = "Name prefix for your deployment."
   default     = "flatcar"
 }
+
+variable "flatcar_image" {
+  type        = string
+  description = "Absolute Flatcar Image URL"
+  default     = ""
+}
