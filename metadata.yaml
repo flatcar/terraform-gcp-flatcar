@@ -52,10 +52,10 @@ spec:
       description: The ID of the project in which to provision resources.
       varType: string
       required: true
-    - name: source_image
+    - name: flatcar_image
       description: The image name for the disk for the VM instance.
       varType: string
-      defaultValue: projects/kinvolk-public/global/images/flatcar-stable-3227-2-2
+      defaultValue: projects/kinvolk-public/global/images/flatcar-stable-4230-2-0
     - name: sub_networks
       description: The sub network name to attach the VM instance.
       varType: list(string)

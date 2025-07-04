@@ -72,5 +72,5 @@ variable "deployment_name" {
 variable "flatcar_image" {
   type        = string
   description = "Absolute Flatcar Image URL"
-  default     = ""
+  default     = "projects/kinvolk-public/global/images/flatcar-stable-4230-2-0"
 }

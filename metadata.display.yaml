@@ -79,14 +79,14 @@ spec:
         project_id:
           name: project_id
           title: Project Id
-        source_image:
-          name: source_image
+        flatcar_image:
+          name: flatcar_image
           title: Image version
           enumValueLabels:
             - label: stable
               value: projects/kinvolk-public/global/images/flatcar-stable-4230-2-0
             - label: beta
-              value: projects/kinvolk-public/global/images/flatcar-beta-4244-1-0
+              value: projects/kinvolk-public/global/images/flatcar-beta-4344-1-0
             - label: alpha
               value: projects/kinvolk-public/global/images/flatcar-alpha-4372-0-0
           xGoogleProperty:
