@@ -7,6 +7,7 @@ variable "project_id" {
 variable "goog_cm_deployment_name" {
   description = "The name of the deployment and VM instance."
   type        = string
+  default     = "flatcar"
 }
 
 variable "zone" {
@@ -72,5 +73,5 @@ variable "deployment_name" {
 variable "flatcar_image" {
   type        = string
   description = "Absolute Flatcar Image URL"
-  default     = "projects/kinvolk-public/global/images/flatcar-stable-4230-2-0"
+  default     = "projects/kinvolk-public/global/images/flatcar-stable-4230-2-1"
 }

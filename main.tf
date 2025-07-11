@@ -5,12 +5,12 @@ provider "google" {
 
 locals {
   image_map = {
-    "stable" = "flatcar-stable-4320-2-0"
-    "beta"   = "flatcar-beta-4244-1-0"
-    "alpha"  = "flatcar-alpha-4372-0-0"
+    "stable" = "flatcar-stable-4320-2-1"
+    "beta"   = "flatcar-beta-4244-1-1"
+    "alpha"  = "flatcar-alpha-4372-0-1"
   }
 
-  flatcar_image = var.flatcar_image == "" ?  "projects/kinvolk-public/global/images/${lookup(local.image_map, var.channel, "flatcar-stable-4320-2-0")}" : var.flatcar_image
+  flatcar_image = var.flatcar_image == "" ?  "projects/kinvolk-public/global/images/${lookup(local.image_map, var.channel, "flatcar-stable-4320-2-1")}" : var.flatcar_image
 
   external_ip = length(var.external_ip) > 0 ? var.external_ip[0] : null
 
@@ -23,7 +23,7 @@ locals {
 }
 
 resource "google_compute_instance" "flatcar_vm" {
-  name         = var.goog_cm_deployment_name
+  name         = "${var.goog_cm_deployment_name}-vm"
   zone         = var.zone
   machine_type = var.machine_type
   can_ip_forward = local.can_ip_forward
