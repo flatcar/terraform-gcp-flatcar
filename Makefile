@@ -23,7 +23,7 @@ export ALPHA_VERSION_DASHED  := $(call dot_to_dash,$(ALPHA_VERSION))
 OUTPUTS := metadata.display.yaml metadata.yaml main.tf variables.tf
 
 # ===== Default =====
-all: package
+all: package upload update-git
 
 # check if version have been fetched properly.
 # FIXME: handle multiple channel failures
@@ -42,6 +42,18 @@ $(ZIP_NAME): $(OUTPUTS) LICENSE README.md
 	zip -r $@ $^ >/dev/null 2>&1 || true
 	@echo "Created: $@"
 
+upload: $(ZIP_NAME)
+	@command -v gsutil >/dev/null 2>&1 || { echo "Error: gsutil not found in PATH"; exit 1; }
+	gsutil cp "$<" gs://flatcar-marketplace/deployments
+
+update-git: $(OUTPUTS)
+	git checkout -b release-$(DATE)
+	git add $(OUTPUTS)
+	git commit -m "Release $(DATE)" -s
+	git push origin release-$(DATE)
+	@echo "Updated terrforms files in $(BRANCH) has been pushed to remote"
+	git checkout -
+
 # Clean target to remove the zip file
 clean:
 	rm -rf $(ZIP_NAME_PREFIX)-*.zip
@@ -51,4 +63,4 @@ show:
 	@echo "Beta:   $(BETA_VERSION)   -> $(BETA_VERSION_DASHED)"
 	@echo "Alpha:  $(ALPHA_VERSION)  -> $(ALPHA_VERSION_DASHED)"
 
-.PHONY: all package clean show check-versions
+.PHONY: all package upload clean show check-versions update-git
