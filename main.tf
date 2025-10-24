@@ -5,12 +5,14 @@ provider "google" {
 
 locals {
   image_map = {
-    "stable" = "flatcar-stable-4320-2-1"
-    "beta"   = "flatcar-beta-4244-1-1"
-    "alpha"  = "flatcar-alpha-4372-0-1"
+    "stable" = "flatcar-stable-4230-2-4"
+    "beta"   = "flatcar-beta-4459-1-0"
+    "alpha"  = "flatcar-alpha-4487-0-0"
   }
 
-  flatcar_image = var.flatcar_image == "" ?  "projects/kinvolk-public/global/images/${lookup(local.image_map, var.channel, "flatcar-stable-4320-2-1")}" : var.flatcar_image
+  flatcar_image = var.flatcar_image == "" ?
+    "projects/kinvolk-public/global/images/${lookup(local.image_map, var.channel, "flatcar-stable-4230-2-4")}" :
+    var.flatcar_image
 
   external_ip = length(var.external_ip) > 0 ? var.external_ip[0] : null
 

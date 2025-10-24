@@ -55,7 +55,7 @@ spec:
     - name: flatcar_image
       description: The image name for the disk for the VM instance.
       varType: string
-      defaultValue: projects/kinvolk-public/global/images/flatcar-stable-4230-2-1
+      defaultValue: projects/kinvolk-public/global/images/flatcar-stable-4230-2-4
     - name: sub_networks
       description: The sub network name to attach the VM instance.
       varType: list(string)
