@@ -10,9 +10,7 @@ locals {
     "alpha"  = "flatcar-alpha-${ALPHA_VERSION_DASHED}"
   }
 
-  flatcar_image = var.flatcar_image == "" ?
-    "projects/kinvolk-public/global/images/${lookup(local.image_map, var.channel, "flatcar-stable-${STABLE_VERSION_DASHED}")}" :
-    var.flatcar_image
+  flatcar_image = var.flatcar_image == "" ? "projects/kinvolk-public/global/images/${lookup(local.image_map, var.channel, "flatcar-stable-${STABLE_VERSION_DASHED}")}" : var.flatcar_image
 
   external_ip = length(var.external_ip) > 0 ? var.external_ip[0] : null
 

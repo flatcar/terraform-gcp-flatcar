@@ -32,7 +32,9 @@ check-versions:
 	@test -n "$(BETA_VERSION)"   || (echo "Error: BETA_VERSION is empty (fetch failed?). Pass BETA_VERSION explicitly"; exit 1)
 	@test -n "$(ALPHA_VERSION)"  || (echo "Error: ALPHA_VERSION is empty (fetch failed?). Pass ALPHA_VERSION explicitly"; exit 1)
 
-$(OUTPUTS): %: %.in | check-versions
+FORCE:
+
+$(OUTPUTS): %: %.in FORCE | check-versions
 	envsubst '$$STABLE_VERSION_DASHED $$BETA_VERSION_DASHED $$ALPHA_VERSION_DASHED' < $< > $@
 
 # create the zip to upload to GCP
