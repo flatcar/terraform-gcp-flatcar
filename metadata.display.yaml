@@ -84,11 +84,11 @@ spec:
           title: Image version
           enumValueLabels:
             - label: stable
-              value: projects/kinvolk-public/global/images/flatcar-stable-4459-2-1
+              value: projects/kinvolk-public/global/images/flatcar-stable-4593-2-1
             - label: beta
-              value: projects/kinvolk-public/global/images/flatcar-beta-4459-1-2
+              value: projects/kinvolk-public/global/images/flatcar-beta-4628-1-1
             - label: alpha
-              value: projects/kinvolk-public/global/images/flatcar-alpha-4515-0-1
+              value: projects/kinvolk-public/global/images/flatcar-alpha-4694-0-0
           xGoogleProperty:
             type: ET_GCE_DISK_IMAGE
         zone:
