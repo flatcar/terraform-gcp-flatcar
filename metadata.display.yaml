@@ -81,9 +81,9 @@ spec:
           title: Image version
           enumValueLabels:
             - label: stable
-              value: projects/kinvolk-public/global/images/flatcar-stable-4757-2-1
+              value: projects/kinvolk-public/global/images/flatcar-stable-4757-2-2
             - label: beta
-              value: projects/kinvolk-public/global/images/flatcar-beta-4790-1-1
+              value: projects/kinvolk-public/global/images/flatcar-beta-4820-1-0
             - label: alpha
               value: projects/kinvolk-public/global/images/flatcar-alpha-4820-0-1
           xGoogleProperty:
