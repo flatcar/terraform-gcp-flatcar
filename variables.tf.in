@@ -37,7 +37,7 @@ variable "network" {
 variable "subnetwork" {
   type        = list(string)
   description = "List of subnetworks (optional)."
-  default     = []
+  default     = ["default"]
 }
 
 variable "external_ip" {

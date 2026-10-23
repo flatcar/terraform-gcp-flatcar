@@ -22,15 +22,15 @@ spec:
         url: https://www.flatcar.org/docs/latest/
   interfaces:
     variables:
-    - name: boot_disk_size
+    - name: boot_disk_size_gb
       description: The boot disk size for the VM instance in GBs
-      varType: string
-      defaultValue: "20"
+      varType: number
+      defaultValue: 20
     - name: boot_disk_type
       description: The boot disk type for the VM instance.
       varType: string
       defaultValue: pd-standard
-    - name: external_ips
+    - name: external_ip
       description: The external IPs assigned to the VM for public access.
       varType: list(string)
       defaultValue:
@@ -43,7 +43,7 @@ spec:
       description: The machine type to create, e.g. e2-small
       varType: string
       defaultValue: n2-standard-4
-    - name: networks
+    - name: network
       description: The network name to attach the VM instance.
       varType: list(string)
       defaultValue:
@@ -55,8 +55,8 @@ spec:
     - name: flatcar_image
       description: The image name for the disk for the VM instance.
       varType: string
-      defaultValue: projects/kinvolk-public/global/images/flatcar-stable-4459-2-1
-    - name: sub_networks
+      defaultValue: projects/kinvolk-public/global/images/flatcar-stable-4757-2-1
+    - name: subnetwork
       description: The sub network name to attach the VM instance.
       varType: list(string)
       defaultValue:
@@ -66,15 +66,17 @@ spec:
       varType: string
       defaultValue: us-west1-a
     outputs:
-    - name: has_external_ip
-      description: Flag to indicate if the machine has an external IP
-    - name: instance_machine_type
-      description: Machine type for the compute instance
-    - name: instance_nat_ip
-      description: Machine type for the compute instance
-    - name: instance_network
-      description: Machine type for the compute instance
-    - name: instance_self_link
-      description: Self-link for the Wordpress compute instance
-    - name: instance_zone
-      description: Zone for the wordpress compute instance
+    - name: deployment
+      description: Name of the deployment (for reference)
+    - name: vm_name
+      description: Name of the VM
+    - name: vm_self_link
+      description: Self-link of the VM
+    - name: vm_zone
+      description: Zone of the VM
+    - name: vm_external_ip
+      description: External IP if assigned, or NONE
+    - name: vm_internal_ip
+      description: Internal IP of the VM
+    - name: vm_id
+      description: Unique ID of the VM

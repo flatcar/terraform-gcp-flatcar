@@ -37,7 +37,7 @@ variable "network" {
 variable "subnetwork" {
   type        = list(string)
   description = "List of subnetworks (optional)."
-  default     = []
+  default     = ["default"]
 }
 
 variable "external_ip" {
@@ -73,5 +73,5 @@ variable "deployment_name" {
 variable "flatcar_image" {
   type        = string
   description = "Absolute Flatcar Image URL"
-  default     = "projects/kinvolk-public/global/images/flatcar-stable-4459-2-1"
+  default     = "projects/kinvolk-public/global/images/flatcar-stable-4757-2-1"
 }
