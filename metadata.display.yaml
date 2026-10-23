@@ -15,8 +15,8 @@ spec:
   ui:
     input:
       variables:
-        boot_disk_size:
-          name: disk_size
+        boot_disk_size_gb:
+          name: boot_disk_size_gb
           title: Disk Size
           section: boot_disk
           xGoogleProperty:
@@ -39,12 +39,9 @@ spec:
           xGoogleProperty:
             type: ET_GCE_MACHINE_TYPE
             zoneProperty: zone
-        name:
-          name: name
-          title: Name
-        network_interface:
-          name: network_interface
-          title: Network Interface
+        network:
+          name: network
+          title: Network
           minItems: 1
           maxItems: 8
           section: networking
@@ -53,8 +50,8 @@ spec:
             gceNetwork:
               allowSharedVpcs: true
               machineTypeVariable: machine_type
-        sub_networks:
-          name: sub_networks
+        subnetwork:
+          name: subnetwork
           title: Subnetwork name
           minItems: 1
           maxItems: 8
@@ -63,9 +60,9 @@ spec:
             type: ET_GCE_SUBNETWORK
             zoneProperty: zone
             gceSubnetwork:
-              networkVariable: networks
-        external_ips:
-          name: external_ips
+              networkVariable: network
+        external_ip:
+          name: external_ip
           title: External IP
           tooltip: An external IP address associated with this instance. Selecting "None" will result in the instance having no external internet access. <a href="https://cloud.google.com/compute/docs/configure-instance-ip-addresses">Learn more</a>
           minItems: 1
@@ -74,7 +71,7 @@ spec:
           xGoogleProperty:
             type: ET_GCE_EXTERNAL_IP
             gceExternalIp:
-              networkVariable: networks
+              networkVariable: network
               type: IP_EPHEMERAL
         project_id:
           name: project_id
@@ -84,11 +81,11 @@ spec:
           title: Image version
           enumValueLabels:
             - label: stable
-              value: projects/kinvolk-public/global/images/flatcar-stable-4459-2-1
+              value: projects/kinvolk-public/global/images/flatcar-stable-4757-2-2
             - label: beta
-              value: projects/kinvolk-public/global/images/flatcar-beta-4459-1-2
+              value: projects/kinvolk-public/global/images/flatcar-beta-4820-1-0
             - label: alpha
-              value: projects/kinvolk-public/global/images/flatcar-alpha-4515-0-1
+              value: projects/kinvolk-public/global/images/flatcar-alpha-4820-0-1
           xGoogleProperty:
             type: ET_GCE_DISK_IMAGE
         zone:
